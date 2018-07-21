@@ -27,7 +27,7 @@ public class TodoItemController {
 	
 	@GetMapping(value = "/todoitems", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<TodoItem> getAllTodoItems() {
-		return repository.findAll();
+		return (List<TodoItem>) repository.findAll();
 	}
 	
 	@GetMapping(value = "/todoitems/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })

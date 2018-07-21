@@ -1,16 +1,27 @@
 package com.CY.restapi.example.todo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "todoitem")
 public class TodoItem {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "owner")
 	private String owner;
+	
+	@Column(name = "isdone")
 	private boolean isDone;
 	
 	public TodoItem() {
@@ -55,5 +66,13 @@ public class TodoItem {
 	
 	public void setDone(boolean isDone) {
 		this.isDone = isDone;
+	}
+	
+	@Override
+	public String toString() {
+		return "Todo{" +
+				", owner='" + owner + '\'' + 
+				", description= '" + description + 
+				"'}";
 	}
 }
