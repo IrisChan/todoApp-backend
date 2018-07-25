@@ -1,16 +1,7 @@
 DROP TABLE IF EXISTS todoitem;
-create table todoitem (id integer not null auto_increment,
+create table todoitem (id integer not null identity,
+ title varchar(255),
  description varchar(255),
- owner varchar(255),
- isDone bit, primary key (id)
+ isDone bit, 
+ targetDate date, primary key (id)
 );
-
-
-######
-#DROP TABLE IF EXISTS todoitem;
-#create table todoitem (id int not null identity,
-# description varchar(255),
-# owner varchar(255),
-# isDone bit, primary key (id)
-#);
-###

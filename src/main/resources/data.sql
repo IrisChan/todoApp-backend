@@ -1,5 +1,7 @@
 insert into todoitem
-values('desc1', 'CY', 0);
+values('code dev', 'finish restapi todo take home', 0, '20180725 00:00:00 AM');
 
 insert into todoitem
-values('desc2', 'HG', 1);
+values('life', 'finish cooking lesson', 0, '20180825 00:00:00 AM');
+
+select * from todoitem

@@ -1,5 +1,7 @@
 package com.CY.restapi.example.todo.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,25 +17,28 @@ public class TodoItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "title")
+	private String title;
+	
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "owner")
-	private String owner;
-	
 	@Column(name = "isdone")
-	private boolean isDone;
+	private boolean done;
+	
+	@Column(name = "targetdate")
+	private Date targetDate;
 	
 	public TodoItem() {
 		super();
 	}
 	
-	public TodoItem(Long id, String description, String owner, boolean isDone) {
+	public TodoItem(Long id, String title, String description, Date targetDate, boolean done) {
 		super();
 		this.id = id;
+		this.title = title;
 		this.description = description;
-		this.owner = owner;
-		this.isDone = isDone;
+		this.done = done;
 	}
 	
 	public Long getId() {
@@ -52,27 +57,58 @@ public class TodoItem {
 		this.description = description;
 	}
 	
-	public String getOwner() {
-		return owner;
+	public String getTitle() {
+		return title;
 	}
 	
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	public boolean isDone() {
-		return isDone;
+		return done;
 	}
 	
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+	
+	public Date getTargetDate() {
+		return this.targetDate;
+	}
+	
+	public void setTargetDate(Date targetDate) {
+		this.targetDate = targetDate;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		
+		if (obj == null) {
+			return false;
+		}
+		
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		
+		TodoItem other = (TodoItem) obj;
+		if (id != other.id) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 	@Override
 	public String toString() {
 		return "Todo{" +
-				", owner='" + owner + '\'' + 
+				", title='" + title + '\'' + 
 				", description= '" + description + 
+				", targetDate= '" + targetDate.toString() + 
 				"'}";
 	}
 }
